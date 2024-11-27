@@ -1,6 +1,6 @@
 import { Router } from '@vaadin/router';
 
-import { formStore, formActions, RESULTS } from './form-store.js';
+import { formStore, FORM_ACTIONS, RESULTS } from './form-store.js';
 import { blgStore, BLOG_ACTIONS } from '../../blg-store.js';
 import { loaderStore, LOADER_ACTIONS } from '../../common/loader/loader-store.js';
 
@@ -16,7 +16,7 @@ export class FormController {
     updateBlog(blog)
       .then(() => {
         blgStore.dispatch(BLOG_ACTIONS.updateBlog(blog));
-        formStore.dispatch(formActions
+        formStore.dispatch(FORM_ACTIONS
           .notifySuccess({ result: RESULTS.SUCCESS, message: 'Blog updated' }));
         loaderStore.dispatch(LOADER_ACTIONS.toggle());
       }, (error) => {
@@ -43,11 +43,11 @@ export class FormController {
   load(id) {
     const { blogs } = blgStore.getState();
     const blog = blogs.filter((item) => item.id === id)[0];
-    formStore.dispatch(formActions.loadBlog(blog));
+    formStore.dispatch(FORM_ACTIONS.loadBlog(blog));
   }
 
   loadEmpty() {
-    formStore.dispatch(formActions.loadBlog({ title: '', author: '', content: '', isDirty: false }));
+    formStore.dispatch(FORM_ACTIONS.loadBlog({ title: '', author: '', content: '', isDirty: false }));
   }
 
   create(blog) {
@@ -66,15 +66,15 @@ export class FormController {
   }
 
   changeTitle(title) {
-    formStore.dispatch(formActions.changeTitle(title));
+    formStore.dispatch(FORM_ACTIONS.changeTitle(title));
   }
 
   changeAuthor(author) {
-    formStore.dispatch(formActions.changeAuthor(author));
+    formStore.dispatch(FORM_ACTIONS.changeAuthor(author));
   }
 
   changeContent(content) {
-    formStore.dispatch(formActions.changeContent(content));
+    formStore.dispatch(FORM_ACTIONS.changeContent(content));
   }
 
 }
@@ -84,7 +84,7 @@ export const update = blog => {
   apiSimulator(2000)
     .then(() => {
       blgStore.dispatch(BLOG_ACTIONS.updateBlog(blog));
-      formStore.dispatch(formActions
+      formStore.dispatch(FORM_ACTIONS
         .notifySuccess({ result: RESULTS.SUCCESS, message: 'Blog updated' }));
       loaderStore.dispatch(LOADER_ACTIONS.toggle());
     })
@@ -106,7 +106,7 @@ export const remove = id => {
 export const load = id => {
   const { blogs } = blgStore.getState();
   const blog = blogs.filter((item) => item.id === id)[0];
-  formStore.dispatch(formActions.loadBlog(blog));
+  formStore.dispatch(FORM_ACTIONS.loadBlog(blog));
 }
 
 export const create = blog => {

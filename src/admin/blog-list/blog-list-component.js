@@ -6,7 +6,7 @@ import { BlogListController } from './blog-list-controller.js';
 
 
 
-export class BlogList extends LitElement {
+export class BlogListComponent extends LitElement {
 
   static styles = css`
     h2 {
@@ -116,4 +116,4 @@ export class BlogList extends LitElement {
 
 }
 
-customElements.define('blog-list', BlogList);
+customElements.define('blog-list', BlogListComponent);

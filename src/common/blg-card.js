@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit";
 
-export class BlogCard extends LitElement {
+export class BlgCard extends LitElement {
 
   static styles = css`
     .blog-card {
@@ -74,4 +74,4 @@ export class BlogCard extends LitElement {
 
 }
 
-customElements.define('blog-card', BlogCard);
+customElements.define('blog-card', BlgCard);

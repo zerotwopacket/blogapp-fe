@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 
-export const formActions = {
+export const FORM_ACTIONS = {
   'loadBlog': (blog) => ({ type: 'form/blogLoaded', payload: blog }),
   'changeTitle': title => ({ type: 'form/titleChanged', payload: title }),
   'changeAuthor': author => ({ type: 'form/authorChanged', payload: author }),

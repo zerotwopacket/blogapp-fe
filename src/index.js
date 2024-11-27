@@ -42,7 +42,7 @@ function initRouter() {
               path: '/:id',
               component: 'blog-post',
               action: async () => {
-                await import('./blog/post/blog-post.js');
+                await import('./blog/post/blog-post-component.js');
               },
             }
           ]
@@ -65,21 +65,21 @@ function initRouter() {
                   path: '',
                   component: 'blog-list',
                   action: async () => {
-                    await import('./admin/blog-list/blog-list.js');
+                    await import('./admin/blog-list/blog-list-component.js');
                   },
                 },
                 {
                   path: '/:id/edit',
                   component: 'blog-form',
                   action: async () => {
-                    await import('./admin/blog-form/blog-form.js');
+                    await import('./admin/blog-form/blog-form-component.js');
                   }
                 },
                 {
                   path: '/:id/add',
                   component: 'blog-form',
                   action: async () => {
-                    await import('./admin/blog-form/blog-form.js');
+                    await import('./admin/blog-form/blog-form-component.js');
                   }
                 }
               ]

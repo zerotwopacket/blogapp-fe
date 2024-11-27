@@ -56,7 +56,7 @@ export class BlogPosts extends LitElement {
   }
 
   async loadBlogCard() {
-    await import('../blog-card.js');
+    await import('../../common/blg-card.js');
   }
 
 }

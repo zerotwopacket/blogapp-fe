@@ -8,7 +8,7 @@ import '../../common/blg-header.js';
 import '../../common/blg-button.js';
 
 
-export class BlogForm extends LitElement {
+export class BlogFormComponent extends LitElement {
 
   static styles = css`
     h2{
@@ -144,4 +144,4 @@ export class BlogForm extends LitElement {
   }
 }
 
-customElements.define('blog-form', BlogForm);
+customElements.define('blog-form', BlogFormComponent);
