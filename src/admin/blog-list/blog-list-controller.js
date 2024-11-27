@@ -1,5 +1,5 @@
 import { blgStore, BLOG_ACTIONS } from '../../blg-store.js';
-import { getBlogs, deleteBlog } from '../bkup/api-service.js';
+import { getBlogs, deleteBlog } from '../api/api-service.js';
 import { loaderStore, LOADER_ACTIONS } from '../../common/loader/loader-store.js';
 
 export class BlogListController {
@@ -14,6 +14,9 @@ export class BlogListController {
       .then(() => {
         blgStore.dispatch(BLOG_ACTIONS.deleteBlog(id));
         loaderStore.dispatch(LOADER_ACTIONS.toggle());
+      }, (err)=>{
+        loaderStore.dispatch(LOADER_ACTIONS.toggle());
+        alert(`Unable to delete blog with id ${1}`)
       });
   }
 

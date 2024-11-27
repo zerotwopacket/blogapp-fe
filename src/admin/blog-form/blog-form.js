@@ -47,7 +47,6 @@ export class BlogForm extends LitElement {
     if (path.endsWith('edit')) {
       const { id } = location.params;
       this._operation = 'edit';
-      console.log(id);
       this.controller.load(parseInt(id));
     } else {
       this._operation = 'add';

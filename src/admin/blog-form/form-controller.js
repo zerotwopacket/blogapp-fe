@@ -4,7 +4,7 @@ import { formStore, formActions, RESULTS } from './form-store.js';
 import { blgStore, BLOG_ACTIONS } from '../../blg-store.js';
 import { loaderStore, LOADER_ACTIONS } from '../../common/loader/loader-store.js';
 
-import { updateBlog, createBlog, deleteBlog } from '../bkup/api-service.js';
+import { updateBlog, createBlog, deleteBlog } from '../api/api-service.js';
 
 const apiSimulator = (delay) => new Promise(resolve => setTimeout(resolve, delay));
 
@@ -21,6 +21,8 @@ export class FormController {
         loaderStore.dispatch(LOADER_ACTIONS.toggle());
       }, (error) => {
         loaderStore.dispatch(LOADER_ACTIONS.toggle());
+        alert('Unable to perform request');
+
       });
   }
 
@@ -32,6 +34,9 @@ export class FormController {
         blgStore.dispatch(BLOG_ACTIONS.deleteBlog(id));
         loaderStore.dispatch(LOADER_ACTIONS.toggle());
         Router.go('/admin/blogs');
+      }, (err)=>{
+        loaderStore.dispatch(LOADER_ACTIONS.toggle());
+        alert('Unable to perform request');
       });
   }
 
@@ -54,6 +59,9 @@ export class FormController {
         loaderStore.dispatch(LOADER_ACTIONS.toggle());
         blgStore.dispatch(BLOG_ACTIONS.addBlog({ ...blog, id: nextId }));
         Router.go('/admin/blogs');
+      }, (error)=>{
+        loaderStore.dispatch(LOADER_ACTIONS.toggle());
+        alert('Unable to perform request');
       });
   }
 

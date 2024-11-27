@@ -64,7 +64,6 @@ export class BlgNav extends LitElement {
 
   constructor() {
     super();
-    console.log('creating top nav');
     this._loginController = new LoginController();
     this._authService = new AuthorizationService();
     this._authService
